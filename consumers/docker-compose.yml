@@ -1,0 +1,28 @@
+version: '3'
+
+services:
+
+  rssconsumer:
+    container_name: rssconsumer
+    build: .
+    environment:
+      KAFKA_BROKER_URL: broker:9092
+      TOPIC_NAME: ${RSS_TOPIC}
+      ARTICLE_SINK_TOPIC: ${ARTICLE_SINK_TOPIC}
+      USER_SINK_TOPIC: ${USER_SINK_TOPIC}
+      CASSANDRA_HOST: ${CASSANDRA_HOST}
+      CASSANDRA_KEYSPACE: ${CASSANDRA_KEYSPACE}
+    command: ["python", "-u","python/rss_consumer.py"]
+    networks:
+      - default
+      - secondary
+    volumes:
+      - $PWD/consumers/csvdata:/usr/app/data
+
+networks:
+  default:
+    external:
+      name: kafka-network
+  secondary:
+    external:
+      name: cassandra-network
