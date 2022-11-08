@@ -14,7 +14,7 @@ Cassandra is setup so it runs keyspace, schema and insert data for the presentat
 
 it's ready to use.
 ```bash
-$ docker-compose -f cassandra/docker-compose.yml --env-file ./.env up -d --force-recreate
+$ docker-compose -f cassandra/docker-compose.yml --env-file ./.env up -d 
 ```
 
 ## Starting kafka on docker
@@ -32,7 +32,7 @@ $ docker-compose -f consumers/docker-compose.yml --env-file ./.env up -d        
 ## Starting Producers
 the producer will get information from Lemonde RSS flux need to lunch every time for new article 
 ```bash
-$ docker-compose -f rss-producer/docker-compose.yml --env-file ./.env  up -d # start the producer for twitter
+$ docker-compose -f rss-producer/docker-compose.yml --env-file ./.env  up -d # start the producer for rss
 ```
 
 ## Check all containers are running with

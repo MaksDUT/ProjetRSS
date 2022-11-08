@@ -39,7 +39,7 @@ CREATE TABLE articlebyuser
     idarticle UUID,
     idflux UUID,
     PRIMARY KEY (iduser,insertTime,idarticle)
-)WITH CLUSTERING ORDER BY (insertTime desc);
+)WITH CLUSTERING ORDER BY (insertTime DESC);
 
 CREATE TABLE articlebyflux
 (
